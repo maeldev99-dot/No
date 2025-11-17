@@ -3,17 +3,17 @@ const fs = require("fs-extra");
 const path = require("path");
 
 const ownerInfo = {
-  name: "𝐄w'𝐫 𝐒𝐚𝐢𝐦",
-  facebook: "https://facebook.com/61565898444113",
-  telegram: "@saimx69x",
-  supportGroup: "https://m.me/j/AbZP4jRGu45w70du/"
+  name: "𝐶𝐻𝑅𝐼𝑆𝑇𝑈𝑆",
+  facebook: "https://www.facebook.com/Anos.Christus",
+  telegram: "ᏉᎾᏆᎧ ᎿᎬᏁ",
+  supportGroup: "🌚🌚⚡"
 };
 
 module.exports = {
   config: {
     name: "pending",
     version: "2.0",
-    author: "Saimx69x",
+    author: "Christus",
     countDown: 5,
     role: 2,
     shortDescription: {
