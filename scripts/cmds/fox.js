@@ -5,18 +5,18 @@ const path = require("path");
 module.exports = {
   config: {
     name: "fox",
-    author: "Saimx69x",
+    author: "Christus",
     category: "image",
     version: "1.0",
     role: 0,
-    shortDescription: { en: "🦊 Send a random fox image" },
-    longDescription: { en: "Fetches a random fox image." },
-    guide: { en: "{p}{n} — Shows a random fox image" }
+    shortDescription: { fr: "🦊 Envoie une image aléatoire de renard" },
+    longDescription: { fr: "Récupère une image aléatoire de renard." },
+    guide: { fr: "{p}{n} — Montre une image aléatoire de renard" }
   },
 
   onStart: async function({ api, event }) {
     try {
-      const apiUrl = "https://xsaim8x-xxx-api.onrender.com/api/fox"; // Fox API
+      const apiUrl = "https://xsaim8x-xxx-api.onrender.com/api/fox"; // API Fox
 
       const response = await axios.get(apiUrl, { responseType: "arraybuffer" });
       const buffer = Buffer.from(response.data, "binary");
@@ -26,12 +26,11 @@ module.exports = {
 
       await api.sendMessage(
         {
-          body: "🦊 Here's a random fox for you!",
+          body: "🦊 Voici un renard aléatoire pour toi !",
           attachment: fs.createReadStream(tempPath)
         },
         event.threadID,
         () => {
-          
           fs.unlinkSync(tempPath);
         },
         event.messageID
@@ -39,7 +38,7 @@ module.exports = {
 
     } catch (err) {
       console.error(err);
-      api.sendMessage("❌ Failed to fetch fox image.\n" + err.message, event.threadID, event.messageID);
+      api.sendMessage("❌ Impossible de récupérer l'image du renard.\n" + err.message, event.threadID, event.messageID);
     }
   }
 };
