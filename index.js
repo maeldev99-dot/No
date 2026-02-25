@@ -1,32 +1,35 @@
 // ===============================
-// GOATBOT STARTER - RAILWAY SAFE
+// GOATBOT RAILWAY STABLE STARTER
 // ===============================
 
 const express = require("express");
 const app = express();
-const path = require("path");
-
-// ====== KEEP ALIVE SERVER ======
 const PORT = process.env.PORT || 3000;
 
+// Keep Railway happy
 app.get("/", (req, res) => {
-  res.send("🐐 GoatBot is running on Railway!");
+  res.send("🐐 GoatBot is running!");
 });
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-app.listen(PORT, () => {
-  console.log("🌍 Web server running on port " + PORT);
-});
+// ===============================
+// LOAD BOT
+// ===============================
+const fs = require("fs");
+const path = require("path");
 
-// ====== START GOATBOT ======
-console.log("🚀 Starting GoatBot...");
+// Detect main file
+let mainFile = null;
+if (fs.existsSync(path.join(__dirname, "main.js"))) mainFile = "./main";
+else if (fs.existsSync(path.join(__dirname, "index.main.js"))) mainFile = "./index.main";
+else console.error("❌ Aucun fichier principal trouvé (main.js ou index.main.js)");
 
-try {
-  require("./index.main"); // si ton vrai fichier principal est index.main.js
-} catch (e) {
+if (mainFile) {
   try {
-    require("./main"); // sinon si c'est main.js
+    require(mainFile);
+    console.log("🚀 GoatBot démarré !");
   } catch (err) {
-    console.error("❌ Error loading bot file:");
+    console.error("❌ Erreur lors du lancement du bot :");
     console.error(err);
   }
 }
