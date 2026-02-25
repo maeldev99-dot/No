@@ -1,7 +1,7 @@
 {
   "name": "goatbot-railway",
   "version": "1.0.0",
-  "description": "GoatBot Messenger Railway Stable Build",
+  "description": "GoatBot Messenger - Railway Stable Version",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
@@ -16,6 +16,7 @@
     "express": "^4.18.2",
     "fs-extra": "^11.2.0",
     "moment-timezone": "^0.5.45",
-    "node-fetch": "^2.6.9"
+    "node-fetch": "^2.6.9",
+    "fca-unofficial": "^1.3.10"
   }
 }
