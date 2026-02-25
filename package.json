@@ -2,7 +2,7 @@
   "name": "goatbot-railway",
   "version": "1.0.0",
   "description": "GoatBot Messenger - Railway Stable Version",
-  "main": "index.js",
+  "main": "main.js",
   "type": "commonjs",
   "scripts": {
     "start": "node index.js"
