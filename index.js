@@ -1,29 +1,32 @@
-/**
- * @author NTKhang
- * Official source: https://github.com/ntkhang03/Goat-Bot-V2
- */
+// ===============================
+// GOATBOT STARTER - RAILWAY SAFE
+// ===============================
 
-const { spawn } = require("child_process");
-const log = require("./logger/log.js");
+const express = require("express");
+const app = express();
+const path = require("path");
 
-function startProject() {
-    const child = spawn("node", ["Sakura.js"], {
-        cwd: __dirname,
-        stdio: "inherit",
-        shell: true,
-        env: { ...process.env, PORT: process.env.PORT || 1000 } // Port 1000 default
-    });
+// ====== KEEP ALIVE SERVER ======
+const PORT = process.env.PORT || 3000;
 
-    child.on("close", (code) => {
-        if (code == 2) {
-            log.info("Restarting Project...");
-            startProject();
-        }
-    });
+app.get("/", (req, res) => {
+  res.send("🐐 GoatBot is running on Railway!");
+});
 
-    child.on("error", (err) => {
-        log.err("INDEX", "Failed to start Sakura.js", err);
-    });
+app.listen(PORT, () => {
+  console.log("🌍 Web server running on port " + PORT);
+});
+
+// ====== START GOATBOT ======
+console.log("🚀 Starting GoatBot...");
+
+try {
+  require("./index.main"); // si ton vrai fichier principal est index.main.js
+} catch (e) {
+  try {
+    require("./main"); // sinon si c'est main.js
+  } catch (err) {
+    console.error("❌ Error loading bot file:");
+    console.error(err);
+  }
 }
-
-startProject();
